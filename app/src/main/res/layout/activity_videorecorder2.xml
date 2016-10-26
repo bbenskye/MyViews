@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/comments_play_activity"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:hint="你想说点啥..." />
+
+        <SurfaceView
+            android:id="@+id/sv_play_activity"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_push"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/confirm_play_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="confirm" />
+
+        <Button
+            android:id="@+id/cancel_play_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="cancel" />
+
+        <Button
+            android:id="@+id/play_to_recorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/pause_to_recorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pause"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</LinearLayout>
