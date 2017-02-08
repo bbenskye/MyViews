@@ -217,7 +217,7 @@ public class VideoRecorderActivity extends Activity implements SurfaceHolder.Cal
         mediarecorder.setVideoSize(176, 144);
 //                mediarecorder.setVideoSize(240, 180);
         // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
-        mediarecorder.setVideoFrameRate(20);
+        mediarecorder.setVideoFrameRate(30);
         mediarecorder.setPreviewDisplay(holder.getSurface());
         // 设置视频文件输出的路径
         mediarecorder.setOutputFile("/sdcard/love1.mp4");

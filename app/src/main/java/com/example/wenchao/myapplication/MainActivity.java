@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.example.wenchao.myapplication.utils.ListDataSave;
 import com.example.wenchao.myapplication.views.MyCheckBox;
 import com.example.wenchao.myapplication.views.MyRadioGroup;
 import com.example.wenchao.myapplication.views.MyTextView;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn2 = new Button(this);
         Button btn3 = new Button(this);
         Button btn4 = new Button(this);
+        Button btn5 = new Button(this);
 
         //创建输入框
         myTextView = new MyTextView(MainActivity.this, "说出一个三国人物：", MyTextView.TYPE_TEXT);
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 "曹孟德", "张辽", "张郃", "徐晃", "乐进", "于禁",
                 "孙权", "太史子义", "甘宁", "周泰", "蒋钦", "凌统"};
         List<String> itemsList = new ArrayList<>();
-        for(String str : checkItems){
+        for (String str : checkItems) {
             itemsList.add(str);
         }
 
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         btn2.setText("提交");
         btn3.setText("拍照");
         btn4.setText("小视频");
+        btn5.setText("sharepreference");
+
         layout2.addView(myTextView);
         layout2.addView(myRadioGroup, lp);
         layout2.addView(myCheckBox);
@@ -84,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         layout2.addView(btn3, lp);
         layout2.addView(btn4, lp);
         layout2.addView(btn1, lp);
+        layout2.addView(btn5, lp);
 
         scrollView.addView(layout2);
         setContentView(scrollView);
@@ -115,22 +121,22 @@ public class MainActivity extends AppCompatActivity {
                 StringBuilder sb = new StringBuilder();
                 String edtContent = myTextView.getTypedContent();
 
-                sb.append(edtContent+" \n\n");
+                sb.append(edtContent + " \n\n");
 
                 String radio = myRadioGroup.getCheckedResult();
 
-                sb.append(radio+": \n");
+                sb.append(radio + ": \n");
 
                 List<String> result = myCheckBox.getCheckedResult();
-                for(String str : result){
+                for (String str : result) {
                     sb.append(str);
                     sb.append(", ");
                 }
-                if(!TextUtils.isEmpty(edtContent)||!TextUtils.isEmpty(radio)||result.size()>0) {
+                if (!TextUtils.isEmpty(edtContent) || !TextUtils.isEmpty(radio) || result.size() > 0) {
                     String res = sb.toString().substring(0, sb.length() - 1);
                     Toast.makeText(MainActivity.this, res, Toast.LENGTH_SHORT).show();
                     System.out.println("Checked : " + res);
-                }else {
+                } else {
                     Toast.makeText(MainActivity.this, "请做出一个选择", Toast.LENGTH_SHORT).show();
                 }
 
@@ -149,6 +155,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, TakePictureActivity.class);
                 startActivity(i);
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<String> datas = new ArrayList<String>();
+                for (int i = 0; i < 10; i++) {
+                    datas.add("string-" + i);
+                }
+                ListDataSave datasave = new ListDataSave(MainActivity.this, "myview");
+                datasave.setDataList("tag", datas);
+
+                List<String> newMyList = datasave.getDataList("tag");
+                for (String str : newMyList) {
+                    Log.i("myView", "str = " + str);
+                }
             }
         });
     }

@@ -101,6 +101,7 @@ public class TakePictureActivity extends Activity implements SurfaceHolder.Callb
                                 camera = null;//取消原来摄像头
                                 camera = Camera.open(i);//打开当前选中的摄像头
                                 try {
+                                    camera.setDisplayOrientation(90);//设置角度
                                     camera.setPreviewDisplay(holder);//通过surfaceview显示取景画面
                                 } catch (IOException e) {
                                     // TODO Auto-generated catch block
@@ -118,6 +119,7 @@ public class TakePictureActivity extends Activity implements SurfaceHolder.Callb
                                 camera = null;//取消原来摄像头
                                 camera = Camera.open(i);//打开当前选中的摄像头
                                 try {
+                                    camera.setDisplayOrientation(90);//设置角度
                                     camera.setPreviewDisplay(holder);//通过surfaceview显示取景画面
                                 } catch (IOException e) {
                                     // TODO Auto-generated catch block
