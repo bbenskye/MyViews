@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'qchatplus'
             keyPassword 'ctsiandroid'
-            storeFile file('C:/codeproject2/QChatPlus.keystore')
+            storeFile file("${rootDir}/config/signing/QChatPlus.keystore")
             storePassword 'ctsiandroid'
         }
     }
